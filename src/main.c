@@ -11,7 +11,7 @@ int main(int argc, char *argv[]) {
         );
     }
     if (!strcmp(argv[1], "init")) {
-        if (make_directory("../") == 0) {
+        if (make_directory("./") == 0) {
             printf("Haha\n");
         }
         else {
