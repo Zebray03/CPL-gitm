@@ -12,10 +12,7 @@ int main(int argc, char *argv[]) {
     }
     if (!strcmp(argv[1], "init")) {
         if (make_directory("./.gitm") == 0 &&
-            make_directory("./.gitm/info") == 0 &&
-            make_directory("./.gitm/logs") == 0 &&
-            make_directory("./.gitm/objects") == 0 &&
-            make_directory("./.gitm/refs") == 0) {
+            make_directory("./.gitm/info") == 0) {
             printf("Haha\n");
         } else {
             printf("Failed to make directory.\n");
