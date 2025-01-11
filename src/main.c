@@ -24,11 +24,11 @@ int main(int argc, char* argv[]) {
                 make_directory("./.gitm/refs/tags") == 0
             ) {
                 fopen("./description", "w");
-                char description[100] = "Unnamed repository; edit this file 'description' to name the repository.\n";
+                const char description[100] = "Unnamed repository; edit this file 'description' to name the repository.\n";
                 fprintf("./description", description);
                 fclose("./description");
                 fopen("./HEAD", "w");
-                char head[100] = "ref: refs/heads/master\n";
+                const char head[100] = "ref: refs/heads/master\n";
                 fprintf("./HEAD", head);
                 fclose("./HEAD");
                 printf("Haha\n");
