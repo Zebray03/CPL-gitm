@@ -17,7 +17,15 @@ endif ()
 # feel free to organize your own project, just assuring that it compiles with this file
 include_directories(${CMAKE_SOURCE_DIR} ${CMAKE_SOURCE_DIR}/include)
 file(GLOB_RECURSE SOURCES ${CMAKE_SOURCE_DIR}/src/*.c)
-add_executable(${PROJECT_NAME} ${SOURCES})
+add_executable(${PROJECT_NAME} ${SOURCES}
+        src/commit.c
+        include/commit.h
+        src/Repository.c
+        include/Repository.h
+        src/blob.c
+        include/blob.h
+        src/tree.c
+        include/tree.h)
 
 # <openssl/ssl.h> support
 find_package(OpenSSL)
@@ -36,16 +44,16 @@ endif ()
 # <math.h> support (unnecessary if you don't use it)
 target_link_libraries(${PROJECT_NAME} m)
 
-# if you're able to manipulate git, feel free to comment this and commit by yourself
-add_custom_command(
-    TARGET ${PROJECT_NAME}
-    POST_BUILD
-    COMMAND git gc
-    COMMAND git add -A --ignore-errors
-    COMMAND git commit --allow-empty -m "Automatic commit."
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    COMMENT "Committing changes automatically."
-)
+## if you're able to manipulate git, feel free to comment this and commit by yourself
+#add_custom_command(
+#    TARGET ${PROJECT_NAME}
+#    POST_BUILD
+#    COMMAND git gc
+#    COMMAND git add -A --ignore-errors
+#    COMMAND git commit --allow-empty -m "Automatic commit."
+#    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+#    COMMENT "Committing changes automatically."
+#)
 
 # do not modify the following code
 set(FILE_TO_SUBMIT ${CMAKE_BINARY_DIR}/submission.zip)
